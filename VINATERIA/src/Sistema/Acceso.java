@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Scanner;
+
 
 public class Acceso {
     //Atributos
@@ -21,7 +21,7 @@ public class Acceso {
     public static LocalDateTime horaBloqueo = null;
     private static String usuarioActual;
 
-    public Acceso(boolean exito, LocalDate fecha, LocalTime hora, String idUsuario, int intentos, String nombreUsuario, String password) {
+    public Acceso() {
         Acceso.exito = exito;
         this.fecha = fecha;
         this.hora = hora;
@@ -90,11 +90,6 @@ public class Acceso {
     //Metodos
     public static boolean iniciarSesion(String nombreUsuario, String password) {
         if(inicioBloqueado()) {System.out.println("No han pasado los 10 min");} //Llama a validar si esta bloqueado, si si acaba
-
-        Scanner barraBusqueda = new Scanner(System.in);//Esto sirve para añadir por consola, pero se puede cambiar.
-        nombreUsuario = barraBusqueda.nextLine();
-        password = barraBusqueda.nextLine();
-
         if (accesoDB("Gestor",nombreUsuario, password)){//Lo busca en tabla Gestor
             return true;
         }else if (accesoDB("Administrador", nombreUsuario, password)){//Lo busca en tabla Administrador
