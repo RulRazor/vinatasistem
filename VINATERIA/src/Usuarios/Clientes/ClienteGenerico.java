@@ -17,11 +17,8 @@ public class ClienteGenerico extends Cliente {
 
     }
 
-    private void generarCG(){
+    public static void generarCG(){
         ClienteGenerico CG = new ClienteGenerico("Anónimo", "Cliente Generico", "00000000", "Anónimo", "Anonimo0", false);
-
-
-
-
+        guardarCliente(CG.getNombre()); //Obtiene el nombre anonimo y lo guarda
     }
 }
